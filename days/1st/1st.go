@@ -20,6 +20,12 @@ func main() {
 
 	// need to return those numbers multiplied by eachother
 	fmt.Println(value1 * value2)
+
+	// part 2 solution
+	var value3 int
+	value1, value2, value3 = FindSumValueThree(entries, 2020)
+
+	fmt.Println(value1 * value2 * value3)
 }
 
 func FindSumValue(entries []int, expectedValue int) (value1 int, value2 int) {
@@ -31,6 +37,20 @@ func FindSumValue(entries []int, expectedValue int) (value1 int, value2 int) {
 		}
 	}
 	return value1, value2
+}
+
+func FindSumValueThree(entries []int, expectedValue int) (value1 int, value2 int, value3 int) {
+	for i := 0; i < len(entries)-2; i++ { // -1 is cause we don't want the last number here
+		for j := i + 1; j < len(entries)-1; j++ { // start j at i+1 cause we need  it to be different numbers
+			for k := j + 1; k < len(entries); k++ {
+				if entries[i]+entries[j]+entries[k] == expectedValue {
+					return entries[i], entries[j], entries[k]
+				}
+			}
+
+		}
+	}
+	return 0, value1, value2
 }
 
 func ReadFile(filePath string) (entries []int, errorCode error) {
