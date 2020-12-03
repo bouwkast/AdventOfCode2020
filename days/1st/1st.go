@@ -28,6 +28,7 @@ func main() {
 	fmt.Println(value1 * value2 * value3)
 }
 
+// FindSumValue finds two values that add up to expectedValue, returns those two values
 func FindSumValue(entries []int, expectedValue int) (value1 int, value2 int) {
 	for i := 0; i < len(entries)-1; i++ { // -1 is cause we don't want the last number here
 		for j := i + 1; j < len(entries); j++ { // start j at i+1 cause we need  it to be different numbers
@@ -39,6 +40,7 @@ func FindSumValue(entries []int, expectedValue int) (value1 int, value2 int) {
 	return value1, value2
 }
 
+// FindSumValueThree finds three values that add up to expectedValue, returns those three values
 func FindSumValueThree(entries []int, expectedValue int) (value1 int, value2 int, value3 int) {
 	for i := 0; i < len(entries)-2; i++ { // -1 is cause we don't want the last number here
 		for j := i + 1; j < len(entries)-1; j++ { // start j at i+1 cause we need  it to be different numbers
@@ -53,6 +55,7 @@ func FindSumValueThree(entries []int, expectedValue int) (value1 int, value2 int
 	return 0, value1, value2
 }
 
+// ReadFile reads the input file and returns an array of ints for the entries
 func ReadFile(filePath string) (entries []int, errorCode error) {
 	file, err := os.Open(filePath)
 	if err != nil {
